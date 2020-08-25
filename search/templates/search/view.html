@@ -1,0 +1,39 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row mb-3">
+			{% if query %}
+			<div class="col-12  mb-3">
+				Results for <b>{{ query }}</b> 
+				<hr>
+			</div>
+			{% else %}
+			<div class="col-12 col-md-8 mx-auto mb-3 py-5">
+    		{% include 'search/snippets/searchform.html' %}
+			<div class="col-12">
+				<hr>
+				
+			</div>
+
+
+			{% endif %}
+</div>
+		<div class="row">
+
+
+	{% for obj in object_list %}
+		<div class="col">
+		{% include 'products/snippets/update-cart.html' with instance=obj %}
+<!-- 		<a href="{{ obj.get_absolute_url }}">{{ obj.title }}</a> </br> -->
+
+		{% if forloop.counter|divisibleby:3 %}
+		</div></div><div class="row">
+		{% else %}
+		</div>
+		{% endif %}
+
+	{% endfor %}
+	<hr>
+</div>
+{% endblock %}
