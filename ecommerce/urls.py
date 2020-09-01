@@ -22,7 +22,6 @@ from django.contrib.auth.views import LogoutView
 from django.views.generic import TemplateView
 
 
-from carts.views import cart_home
 from addresses.views import checkout_address_create_view
 from accounts.views import login_page, register_page, guest_register_view
 from . import views
@@ -39,21 +38,11 @@ urlpatterns = [
     path('logout/',LogoutView.as_view(), name = 'logout'),
     path('register/',register_page, name = 'register'),
     path('bootstrap/',TemplateView.as_view(template_name ='bootstrap/example.html')),
-    # path('featured/',ProductFeaturedListView.as_view(), name = 'featured'),
-    # re_path(r'^featured/(?P<pk>\d+)/$',ProductFeaturedDetailView.as_view(), name = 'featured_detail'),
     path('products/', include(("products.urls", 'products'), namespace='products')),
     path('search/', include(("search.urls", 'search'), namespace='search')),
-    path('cart/',cart_home, name = 'cart'),
     path('cart/', include(("carts.urls", 'cart'), namespace='cart')),
-    # path('products-fbv/',product_list_view, name = 'product-fbv'),
-    # #re_path(r'^product/(?P<pk>\d+)/$',ProductDetailView.as_view(), name = 'detail'),
-    # re_path(r'^products-fbv/(?P<pk>\d+)/$',product_detail_view, name = 'detail'),
-    # re_path(r'^products/(?P<slug>[\w-]+)/$',ProductDetailSlugView.as_view(), name = 'detail_slug'),
-    # #re_path(r'^article/(?P<slug>[\w-]+)/$', article_detail, name='article'),
-    
 ]
 
-# app_name = 'products'
 
 if settings.DEBUG:
     urlpatterns = urlpatterns + static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)
