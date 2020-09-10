@@ -42,6 +42,8 @@
               } else {
                 submitSpan.html("<button class='btn btn-link'>Add to cart</button>")
               }
+              var navbarCount = $(".navbar-cart-count")
+              navbarCount.text(data.cartItemCount)
             },
             error: function(errorData){
               console.log("error")
