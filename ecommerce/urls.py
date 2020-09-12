@@ -24,6 +24,7 @@ from django.views.generic import TemplateView
 
 from addresses.views import checkout_address_create_view, checkout_address_reuse_view
 from accounts.views import login_page, register_page, guest_register_view
+from carts.views import cart_detail_api_view
 from . import views
 
 
@@ -42,6 +43,7 @@ urlpatterns = [
     path('products/', include(("products.urls", 'products'), namespace='products')),
     path('search/', include(("search.urls", 'search'), namespace='search')),
     path('cart/', include(("carts.urls", 'cart'), namespace='cart')),
+    path('api/cart/',cart_detail_api_view, name = 'api_cart'),
 ]
 
 
